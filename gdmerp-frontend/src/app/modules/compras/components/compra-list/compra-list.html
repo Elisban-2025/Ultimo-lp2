@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h2>Listado de Compras</h2>
+  <a routerLink="/compras/nuevo" class="btn btn-primary">Registrar Compra</a>
+</div>
+
+<div class="card">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>N° Comprobante</th>
+        <th>Fecha Emisión</th>
+        <th>Proveedor</th>
+        <th>Estado</th>
+        <th>Total</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of compras">
+        <td>{{ c.numeroComprobante }}</td>
+        <td>{{ c.fechaEmision }}</td>
+        <td>{{ c.proveedorRazonSocial || 'N/A' }}</td>
+        <td>
+          <span class="badge" [ngClass]="{'badge-success': c.estado === 'PAGADO', 'badge-warning': c.estado === 'PENDIENTE'}">
+            {{ c.estado }}
+          </span>
+        </td>
+        <td>S/ {{ c.total | number:'1.2-2' }}</td>
+        <td>
+          <button class="btn btn-sm btn-outline">Ver Detalle</button>
+        </td>
+      </tr>
+      <tr *ngIf="compras.length === 0">
+        <td colspan="6" class="text-center">No hay compras registradas.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

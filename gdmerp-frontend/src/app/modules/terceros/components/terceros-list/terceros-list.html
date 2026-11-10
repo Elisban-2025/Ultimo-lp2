@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h2>Terceros (CRM)</h2>
+  <a routerLink="/terceros/nuevo" class="btn btn-primary">Nuevo Tercero</a>
+</div>
+
+<div class="card">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>N° Documento</th>
+        <th>Razón Social</th>
+        <th>Tipo Comercial</th>
+        <th>Teléfono</th>
+        <th>Correo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of tercerosFiltrados">
+        <td>{{ t.numeroDocumento }}</td>
+        <td>{{ t.razonSocial }}</td>
+        <td>
+          <span class="badge" [ngClass]="{'badge-success': t.tipoTercero === 'PROVEEDOR', 'badge-info': t.tipoTercero === 'CLIENTE'}">
+            {{ t.tipoTercero }}
+          </span>
+        </td>
+        <td>{{ t.telefono || '-' }}</td>
+        <td>{{ t.correo || '-' }}</td>
+        <td>
+          <button class="btn btn-sm btn-outline">Editar</button>
+        </td>
+      </tr>
+      <tr *ngIf="tercerosFiltrados.length === 0">
+        <td colspan="6" class="text-center">No hay terceros registrados.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

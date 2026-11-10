@@ -1,0 +1,54 @@
+<div class="page-header">
+  <h2>Nuevo Proveedor</h2>
+</div>
+
+<div class="card">
+  <form [formGroup]="form" (ngSubmit)="guardar()" class="erp-form">
+    
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>RUC</label>
+        <div class="input-group">
+          <input type="text" formControlName="ruc" class="form-control" placeholder="Ingrese RUC">
+          <button type="button" class="btn btn-secondary" (click)="consultarRuc()" [disabled]="buscandoRuc()">
+            {{ buscandoRuc() ? 'Buscando...' : 'Consultar SUNAT' }}
+          </button>
+        </div>
+        <span class="text-danger">{{ mensajeValidacion('ruc') }}</span>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Razón Social</label>
+        <input type="text" formControlName="razonSocial" class="form-control">
+        <span class="text-danger">{{ mensajeValidacion('razonSocial') }}</span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Teléfono</label>
+        <input type="text" formControlName="telefono" class="form-control">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Email</label>
+        <input type="email" formControlName="email" class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Dirección</label>
+      <input type="text" formControlName="direccion" class="form-control">
+    </div>
+
+    <div *ngIf="error()" class="alert alert-danger mt-3">
+      {{ error() }}
+    </div>
+
+    <div class="form-actions mt-4">
+      <button type="button" class="btn btn-outline mr-2" routerLink="/compras/proveedores">Cancelar</button>
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid || loading()">
+        {{ loading() ? 'Guardando...' : 'Guardar Proveedor' }}
+      </button>
+    </div>
+  </form>
+</div>

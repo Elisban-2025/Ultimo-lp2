@@ -1,0 +1,41 @@
+<div class="erp-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2>GDMERP</h2>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li>
+          <a routerLink="/compras/proveedores" routerLinkActive="active">
+            <span class="icon">📦</span> Proveedores
+          </a>
+        </li>
+        <li>
+          <a routerLink="/compras/lista" routerLinkActive="active">
+            <span class="icon">🛒</span> Compras
+          </a>
+        </li>
+        <li>
+          <a routerLink="/terceros/lista" routerLinkActive="active">
+            <span class="icon">👥</span> Terceros
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Contenido Principal -->
+  <main class="main-content">
+    <header class="topbar">
+      <div class="user-info">
+        <span>Bienvenido, Néstor Huaylla</span>
+      </div>
+    </header>
+    
+    <div class="content-area">
+      <!-- Aquí se inyectan las vistas (listas, formularios) -->
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>
